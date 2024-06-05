@@ -1,42 +1,50 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  background-color: #212121;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html {
+  overflow-x: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  color: #FFFFFF;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.container {
+  width: 100vw;
+  max-width: none;
+  margin: 0px;
 }
 
 .card {
-  padding: 2em;
+  background-color: #212121;
+  border: 0px;
+  box-shadow: none;
 }
 
-.read-the-docs {
-  color: #888;
-} */
+.card:hover {
+  background-color: #282828;
+  border: 1px solid #FFFFFF;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.poster {
+  width: 180px;
+  height: 380px;
+}
+
+.poster-title{
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.poster-date{
+  color: #847F7F;
+  font-weight: bold;
+}
+
+.infinite-scroll-component {
+  overflow-x: hidden!important;
+}
