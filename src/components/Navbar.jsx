@@ -21,7 +21,6 @@ export const Navbar = () => {
       search: `?search=${search}`
     });
     navigate(0);
-    console.log('recherche')
   }
 
   return (

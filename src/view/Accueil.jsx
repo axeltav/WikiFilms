@@ -29,6 +29,8 @@ export const Accueil = () => {
     const [fromNoteApply, setFromNoteApply] = useState(0);
     const [fromNoteSelected, setFromNoteSelected] = useState(0);
 
+    const [sort, setSort] = useState('');
+
     const {get} = useAxiosOpti();
 
     useEffect(() => {
@@ -87,6 +89,14 @@ export const Accueil = () => {
 
       if(fromNoteApply) {
         params = params + `&vote_average.gte=${fromNoteSelected}`;
+      }
+
+      if(sort.length > 0) {
+        params = params + `&sort_by=${sort}`;
+      }
+
+      if(sort === "vote_average.asc" || sort === "vote_average.desc") {
+        params = params + "&vote_count.gte=500"
       }
 
       get(`discover/movie?page=${page}&language=fr&api_key=de399415d2204316dcf46dabb3632ce6` + params)
@@ -148,6 +158,10 @@ export const Accueil = () => {
         params = params + `&vote_average.gte=${fromNoteSelected}`;
       }
 
+      if(sort.length > 0) {
+        params = params + `&sort_by=${sort}`;
+      }
+
       setgenresApply(genresChecked);
 
       setStartRealeaseDateApply(startRealeaseDateSelected);
@@ -167,7 +181,55 @@ export const Accueil = () => {
             })
     }
 
+    const handleSortChange = (e) => {
+      
+      let params = '';
 
+      if (genresApply.length > 0) {
+        params = `&with_genres=${genresApply.join('%7C%7C')}`;
+      }
+
+      if(startRealeaseDateApply){
+        const date = new Date(startRealeaseDateApply);
+        params = params + `&primary_release_date.gte=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      }
+      
+      if(endRealeaseDateApply){
+        const date = new Date(endRealeaseDateApply);
+        params = params + `&primary_release_date.lte=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      }
+
+      if(toTimeApply && toTimeApply < 400){
+        params = params + `&with_runtime.lte=${toTimeApply}`;
+      }
+
+      if(fromTimeApply){
+        params = params + `&with_runtime.gte=${fromTimeApply}`;
+      }
+
+      if(toNoteApply) {
+        params = params + `&vote_average.lte=${toNoteSelected}`;
+      }
+
+      if(fromNoteApply) {
+        params = params + `&vote_average.gte=${fromNoteSelected}`;
+      }
+
+      setSort(e.target.value);
+
+      params = params + `&sort_by=${e.target.value}`;
+
+      if(e.target.value === "vote_average.asc" ||e.target.value === "vote_average.desc") {
+        params = params + "&vote_count.gte=500"
+      }
+
+      get(`discover/movie?page=1&language=fr&api_key=de399415d2204316dcf46dabb3632ce6` + params)
+            .then(res => {
+              setPage(2);
+              setMovies(res.data.results);
+              res.data.results.length >= 20 ? setHasMore(true) : setHasMore(false);
+            })
+    }
     
     
 
@@ -227,6 +289,26 @@ export const Accueil = () => {
             </form>
           </aside>
           <section className="col-9 pt-5 px-0">
+            <div className="sort pb-3 row">
+              <div className="col-9"></div>
+              <select onChange={handleSortChange} defaultValue="" style={{width: "16rem"}} className="form-control form-control-sm col-2">
+                <option value="">Trier les résultats par</option>
+                <optgroup label="popularité">
+                  <option value="popularity.desc">décroissant</option>
+                  <option value="popularity.asc">croissant</option>
+                </optgroup>
+                <optgroup label="Évaluation">
+                  <option value="vote_average.desc">décroissant</option>
+                  <option value="vote_average.asc">croissant</option>
+                </optgroup>
+                <optgroup label="Date de sortie">
+                  <option value="primary_release_date.desc">décroissant</option>
+                  <option value="primary_release_date.asc">croissant</option>
+                </optgroup>
+                <option value="title.asc">Ordre alphabétique</option>
+              </select>
+            </div>
+          
             <MovieList movies={movies}/>
           </section>
         </div>

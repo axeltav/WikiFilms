@@ -110,6 +110,10 @@ p {
   font-size: 1.25rem;
   margin-bottom: 4px;
 }
+*
+.sort {
+  position:relative;
+}
 
 /* --------------- Double Range CSS ------------------- */
 .range_container {
