@@ -12,9 +12,12 @@ export const MovieCard = ({movie = {}}) => {
 
   return (
     <>
-        <div  className="col-2 pb-3 mx-3" >
+        <div  className="col-2  d-flex justify-content-center pb-3 mx-3" >
             <div className="card poster" onClick={() => routeChangeFilm(movie.id)}>
-                <img className="card-img-top " src={"https://image.tmdb.org/t/p/w200"+ movie.poster_path} alt="Card image cap"/>
+              {movie.poster_path ? 
+              <img className="card-img-top" src={"https://image.tmdb.org/t/p/w200"+ movie.poster_path} alt={`poster de ${movie.title}`}/> :
+              <div className="card-img-top" style={{backgroundColor: "grey", height: "265px"}}></div>
+            }
                 <div className="overley-note d-flex justify-content-center align-items-center"
                   style={Math.round(movie.vote_average*10) >=70 ? {borderColor: "green"} : 
                   Math.round(movie.vote_average*10) >=40 ?{borderColor: "yellow"} : 
@@ -22,8 +25,8 @@ export const MovieCard = ({movie = {}}) => {
                   <p className="overley-text mb-0">{movie.vote_count > 0 ? Math.round(movie.vote_average*10) : 'NR' }</p>
                 </div>
                 <div className="card-body pt-2">
-                <h5 className="card-title poster-title mb-1">{movie.title}</h5>
-                <p className="card-text poster-date">{movie.release_date}</p>
+                  <h5 className="card-title poster-title mb-1">{movie.title}</h5>
+                  <p className="card-text poster-date">{movie.release_date}</p>
                 </div>
             </div>
         </div>

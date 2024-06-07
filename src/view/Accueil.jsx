@@ -180,8 +180,8 @@ export const Accueil = () => {
         loader={<p style={{color: "white"}}>Chargement de nouveaux films ...</p>}>
       <div className="container">
         <div className="row" style={{display:"flex", flexWrap: "wrap"}}>
-          <div className="col-3 d-flex flex-column align-items-center pt-5 filters">
-            <h1>Liste des films</h1>
+          <aside className="col-3 d-flex flex-column align-items-center pt-5 filters">
+            <h2>Liste des films</h2>
             {/* filtres ici */}
             <p>Filtres</p>
 
@@ -225,10 +225,10 @@ export const Accueil = () => {
                 <button type="submit" className="btn validBtn">Valider</button>
               </div>
             </form>
-          </div>
-          <div className="col-9 pt-5 px-0">
+          </aside>
+          <section className="col-9 pt-5 px-0">
             <MovieList movies={movies}/>
-          </div>
+          </section>
         </div>
       </div>
       </InfiniteScroll>
@@ -236,6 +236,3 @@ export const Accueil = () => {
     </>
   );
 }
-
-
-
