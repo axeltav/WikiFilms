@@ -2,6 +2,7 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import { Accueil } from './view/Accueil';
 import { FilmDetail } from './view/FilmDetail';
+import { FilmRecherche } from './view/FilmRecherche';
 import { Navbar } from './components/Navbar';
 
 function App() {
@@ -18,6 +19,10 @@ function App() {
         {
           path: 'films/:id',
           element: <FilmDetail/>
+        },
+        {
+          path: 'films/recherche',
+          element: <FilmRecherche/>
         },
         {
           path: "*",

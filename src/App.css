@@ -1,42 +1,221 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  background-color: #212121;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html {
+  overflow-x: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1, h2, h3, h4, h5, h6{
+  color: #FFFFFF;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+p {
+  color: #FFFFFF;
+}
+
+.white {
+  color : #FFFFFF;
+}
+
+.container {
+  width: 100vw;
+  max-width: none;
+  margin: 0px;
 }
 
 .card {
-  padding: 2em;
+  background-color: #212121;
+  border: 0px;
+  box-shadow: none;
+  transition: 0.5s;
 }
 
-.read-the-docs {
-  color: #888;
-} */
+.card:hover {
+  background-color: #282828;
+  /* border: 1px solid #FFFFFF; */
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%,  
+              100%, 0.075),
+              /* shadow ring 👇 */
+              0 0 0 1px hsla(0, 0%, 100%, 0.075),
+              /* multiple soft shadows 👇 */
+              0 0.3px 0.4px hsla(0, 0%, 100%, 0.02),
+              0 0.9px 1.5px hsla(0, 0%, 100%, 0.045),
+              0 3.5px 6px hsla(0, 0%, 100%, 0.09);
+  /* box-shadow: none; */
+  cursor: pointer;
+}
+
+.poster {
+  width: 180px;
+  height: 380px;
+}
+
+.poster-title{
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.poster-date{
+  color: #847F7F;
+  font-weight: bold;
+}
+
+.infinite-scroll-component {
+  overflow-x: hidden!important;
+}
+
+.validBtn {
+  background-color: #4A2D4E;
+  color: white;
+}
+
+.filters {
+  background-color: #292929;
+}
+
+.validation {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+.formFilter {
+  width: 75%;
+}
+
+.modalFilter {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.dateInput {
+  width: 75%;
+}
+
+.overley-note {
+  position: absolute;
+  bottom: 7.4em;
+  right: 0.5em;
+  height: 45px;
+  width: 45px;
+  background-color: #c5c5c5ce;
+  border-radius: 50%;
+  display: inline-block;
+  border: 4px solid
+}
+
+.overley-text{
+  color: black;
+  font-weight: bold;
+}
+
+.siteName {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+*
+.sort {
+  position:relative;
+}
+
+.select-responsive {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-filter {
+  width: 100px;
+}
+
+.modal-dialog {
+  max-width: 450px;
+}
+
+.modal-content {
+  background-color: #212121;
+  border: white solid 1px;
+}
+
+.modal-header, .modal-body, .modal-footer {
+  border: none;
+}
+
+/* --------------- Double Range CSS ------------------- */
+.range_container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 2em auto;
+}
+
+.sliders_control {
+  position: relative;
+  min-height: 30px;
+}
+
+.form_control {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: #635a5a;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: all;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #C6C6C6;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  pointer-events: all;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #C6C6C6;
+  cursor: pointer;  
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  background: #f7f7f7;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+  -webkit-box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+}
+
+input[type="number"] {
+  color: #8a8383;
+  width: 50px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; 
+  appearance: none;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  background-color: #C6C6C6;
+  pointer-events: none;
+}
