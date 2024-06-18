@@ -12,7 +12,7 @@ export const MovieCard = ({movie = {}}) => {
 
   return (
     <>
-        <div  className="col-2  d-flex justify-content-center pb-3 mx-3" >
+        <div  className="col-5 col-sm-5 col-md-4 col-lg-3 col-xl-2  d-flex justify-content-center pb-3 px-0 mx-1" >
             <div className="card poster" onClick={() => routeChangeFilm(movie.id)}>
               {movie.poster_path ? 
               <img className="card-img-top" src={"https://image.tmdb.org/t/p/w200"+ movie.poster_path} alt={`poster de ${movie.title}`}/> :

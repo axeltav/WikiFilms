@@ -85,6 +85,12 @@ p {
   width: 75%;
 }
 
+.modalFilter {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
 .dateInput {
   width: 75%;
 }
@@ -113,6 +119,30 @@ p {
 *
 .sort {
   position:relative;
+}
+
+.select-responsive {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-filter {
+  width: 100px;
+}
+
+.modal-dialog {
+  max-width: 450px;
+}
+
+.modal-content {
+  background-color: #212121;
+  border: white solid 1px;
+}
+
+.modal-header, .modal-body, .modal-footer {
+  border: none;
 }
 
 /* --------------- Double Range CSS ------------------- */

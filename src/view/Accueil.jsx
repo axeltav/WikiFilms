@@ -3,6 +3,8 @@ import { useAxiosOpti } from "../hooks/useAxiosOpti";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { MovieList } from "../components/MovieList";
 import RangeSlider from "../components/RangeSlider";
+import { FormFilter } from "../components/FormFilter";
+import { ModalFilter } from "../components/ModalFilter";
 
 export const Accueil = () => {
 
@@ -240,57 +242,30 @@ export const Accueil = () => {
         next={fetchMoreMovies}
         hasMore={hasMore}
         loader={<p style={{color: "white"}}>Chargement de nouveaux films ...</p>}>
-      <div className="container">
-        <div className="row" style={{display:"flex", flexWrap: "wrap"}}>
-          <aside className="col-3 d-flex flex-column align-items-center pt-5 filters">
+      <div className="container m-0 p-0">
+        <div className="row m-0" style={{display:"flex", flexWrap: "wrap"}}>
+          <aside className="d-none d-md-flex col-3 flex-column align-items-center pt-5 pl-0 pr-0 filters ">
             <h2>Liste des films</h2>
             {/* filtres ici */}
             <p>Filtres</p>
 
-            <form action="" onSubmit={validFilters} className="formFilter">
-              <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Séléctionez les genres
-                </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  {genres.map(genre => {
-                    return (
-                      <div key={genre.id} className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id={genre.id} onChange={changeGenresSelected}/>
-                        <label className="form-check-label" htmlFor={genre.id} >
-                          {genre.name}
-                        </label>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-              <div className="form-group pt-3">
-                <p>Dates de sorties :</p>
-                <div className="d-flex justify-content-between pb-3">
-                  <label htmlFor="startRealeaseDate" className="white">Du</label>
-                  <input type="date" className="form-control dateInput" id="startRealeaseDate" onChange={changeStartRealeaseDateSelected}/>
-                </div>
-                <div className="d-flex justify-content-between">
-                  <label htmlFor="endRealeaseDate" className="white">Au</label>
-                  <input type="date" className="form-control dateInput" id="endRealeaseDate" onChange={changeEndRealeaseDateSelected}/>
-                </div>
-              </div>
-              <div>
-                <p>Durée du film :</p>
-                <RangeSlider updateTo={setToTimeSelected} updateFrom={setFromTimeSelected} max={400} name="runTime"/>
+            <FormFilter  validFilters={validFilters}
+              genres={genres} 
+              changeGenresSelected={changeGenresSelected} 
+              changeStartRealeaseDateSelected={changeStartRealeaseDateSelected} 
+              changeEndRealeaseDateSelected={changeEndRealeaseDateSelected}
+              setToTimeSelected={setToTimeSelected} 
+              setFromTimeSelected={setFromTimeSelected} 
+              setToNoteSelected={setToNoteSelected} 
+              setFromNoteSelected={setFromNoteSelected}/>
 
-                <p>évaluation des utilisateurs :</p>
-                <RangeSlider updateTo={setToNoteSelected} updateFrom={setFromNoteSelected} max={10} name="note"/>
-              </div>
-              <div className="validation">
-                <button type="submit" className="btn validBtn">Valider</button>
-              </div>
-            </form>
           </aside>
-          <section className="col-9 pt-5 px-0">
+          <section className="col-12 col-md-9 pt-5 px-0">
             <div className="sort pb-3 row">
-              <div className="col-9"></div>
+              <aside className="d-flex d-md-none col-3 ml-1 justify-content-center">
+                <button className="btn btn-filter" data-toggle="modal" data-target="#filterModal">Filtres</button>
+              </aside>
+              <div className="col-6 col-md-9"></div>
               <select onChange={handleSortChange} defaultValue="" style={{width: "16rem"}} className="form-control form-control-sm col-2">
                 <option value="">Trier les résultats par</option>
                 <optgroup label="popularité">
@@ -313,6 +288,16 @@ export const Accueil = () => {
           </section>
         </div>
       </div>
+      <ModalFilter  validFilters={validFilters}
+              genres={genres} 
+              changeGenresSelected={changeGenresSelected} 
+              changeStartRealeaseDateSelected={changeStartRealeaseDateSelected} 
+              changeEndRealeaseDateSelected={changeEndRealeaseDateSelected}
+              setToTimeSelected={setToTimeSelected} 
+              setFromTimeSelected={setFromTimeSelected} 
+              setToNoteSelected={setToNoteSelected} 
+              setFromNoteSelected={setFromNoteSelected}/>
+
       </InfiniteScroll>
 
     </>
