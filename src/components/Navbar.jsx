@@ -30,6 +30,10 @@ export const Navbar = () => {
     navigate('/inscription');
   }
 
+  const handleConnexion = () => {
+    navigate('/connexion');
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -61,7 +65,7 @@ export const Navbar = () => {
     /> : 
     <div>
       <button className="btn p-1 m-1" onClick={handleInscription}>Inscription</button>
-      <button className="btn p-1 m-1">Connexion</button>
+      <button className="btn p-1 m-1" onClick={handleConnexion}>Connexion</button>
     </div>}
     
 </nav>

@@ -5,6 +5,7 @@ import { FilmDetail } from './view/FilmDetail';
 import { FilmRecherche } from './view/FilmRecherche';
 import { Navbar } from './components/Navbar';
 import { Inscription } from './view/Inscription';
+import { Connexion } from './view/Connexion';
 
 function App() {
 
@@ -28,6 +29,10 @@ function App() {
         {
           path: '/inscription',
           element: <Inscription/>
+        },
+        {
+          path: '/connexion',
+          element: <Connexion/>
         },
         {
           path: "*",
