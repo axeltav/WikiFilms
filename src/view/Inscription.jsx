@@ -51,12 +51,12 @@ export const Inscription = () => {
 
         let users = JSON.parse(localStorage.getItem('users'));
 
-        if (users.find(user => user.userName === userName)) {
+        if (users && users.find(user => user.userName === userName)) {
             setUserNameError('Ce nom d\'utilisateur est déjà utilisé')
             isValid = false;
         }
 
-        if(users.find(user => user.email === email)) {
+        if(users && users.find(user => user.email === email)) {
             setEmailError('Ce mail est déjà utilisé')
             isValid = false;
         }
