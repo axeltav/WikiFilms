@@ -4,6 +4,7 @@ import { Accueil } from './view/Accueil';
 import { FilmDetail } from './view/FilmDetail';
 import { FilmRecherche } from './view/FilmRecherche';
 import { Navbar } from './components/Navbar';
+import { Inscription } from './view/Inscription';
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
         {
           path: 'films/recherche',
           element: <FilmRecherche/>
+        },
+        {
+          path: '/inscription',
+          element: <Inscription/>
         },
         {
           path: "*",
