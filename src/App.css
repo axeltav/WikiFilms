@@ -156,6 +156,42 @@ p {
   color: red;
 }
 
+.dd {
+  position: relative;
+  display: inline-block;
+}
+
+.dd-content {
+  /* display: none; */
+  position: absolute;
+  right: -10px;
+  background-color: #383838;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding-top: 4px;
+  z-index: 1;
+}
+
+/* .dd:hover .dd-content {
+  display: block;
+} */
+.user-avatar {
+  cursor: pointer;
+}
+
+.userMenuItem {
+  cursor: pointer;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.userMenuItem:hover {
+  background-color: #4f4f4f;
+  
+}
+
 /* --------------- Double Range CSS ------------------- */
 .range_container {
   display: flex;
