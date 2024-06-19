@@ -43,9 +43,9 @@ export const Connexion = () => {
                 <section className="col-10 col-md-6 p-5 form-inscription">
                     <h1>Connexion</h1>
                     <form action="" onSubmit={handleSubmit}>
+                        {authError? <p className="errorForm h5">{authError}</p> : ''}
                         <div className="mt-3">
                             <label htmlFor="email" className="white h4">Email :</label>
-                            {/* {emailError? <p className="errorForm">{emailError}</p> : ''} */}
                             <input type="text" id="email" className="form-control" aria-label="champ email" value={email} onChange={handleEmail}/>
                         </div>
                         <div className="mt-3">
