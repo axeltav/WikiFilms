@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Avatar from "react-avatar";
 
 export const Navbar = () => {
 
   const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
+
+  let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -21,6 +24,10 @@ export const Navbar = () => {
       search: `?search=${search}`
     });
     navigate(0);
+  }
+
+  const handleInscription = () => {
+    navigate('/inscription');
   }
 
   return (
@@ -45,6 +52,18 @@ export const Navbar = () => {
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Chercher" value={search} onChange={handleChange}/>
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
     </form>
+    {currentUser && currentUser.userName ?
+    <Avatar
+    className="ml-2"
+    name={currentUser.userName}
+    size="40"
+    round={true}
+    /> : 
+    <div>
+      <button className="btn p-1 m-1" onClick={handleInscription}>Inscription</button>
+      <button className="btn p-1 m-1">Connexion</button>
+    </div>}
+    
 </nav>
     </>
   );

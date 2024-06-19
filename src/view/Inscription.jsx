@@ -78,7 +78,7 @@ export const Inscription = () => {
   return (
     <div className="container">
         <section className="row d-flex justify-content-center align-content-center pt-3">
-            <section className="col-6 p-5 form-inscription">
+            <section className="col-10 col-md-6 p-5 form-inscription">
                 <h1>Inscription</h1>
                 <form action="" onSubmit={handleSubmit}>
                     <div className="mt-3">
