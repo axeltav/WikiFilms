@@ -2,6 +2,10 @@ body {
   background-color: #212121;
 }
 
+#root {
+  min-height: 100vh;
+}
+
 html {
   overflow-x: hidden;
 }
@@ -142,6 +146,14 @@ p {
 
 .modal-header, .modal-body, .modal-footer {
   border: none;
+}
+
+.form-inscription {
+  background-color: #383838;
+}
+
+.errorForm {
+  color: red;
 }
 
 /* --------------- Double Range CSS ------------------- */
