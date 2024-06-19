@@ -5,6 +5,7 @@ import Avatar from "react-avatar";
 export const Navbar = () => {
 
   const [search, setSearch] = useState('');
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,6 +31,19 @@ export const Navbar = () => {
     navigate('/inscription');
   }
 
+  const handleConnexion = () => {
+    navigate('/connexion');
+  }
+
+  const handleLogOut = () => {
+    localStorage.removeItem("currentUser");
+    navigate(0);
+  };
+
+  const handleUserAvatarClick = () => {
+    setShowUserMenu(!showUserMenu);
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,15 +67,26 @@ export const Navbar = () => {
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
     </form>
     {currentUser && currentUser.userName ?
-    <Avatar
-    className="ml-2"
-    name={currentUser.userName}
-    size="40"
-    round={true}
-    /> : 
+    <div className="dd">
+      <Avatar
+      className="ml-2 user-avatar"
+      onClick={handleUserAvatarClick}
+      name={currentUser.userName}
+      size="40"
+      round={true}
+      /> 
+      {showUserMenu && 
+        <div className="dd-content">
+          <div className="userMenuItem" onClick={handleLogOut}>
+            <p className="m-0">Déconnexion</p>
+          </div>
+        </div>
+      }
+    </div>
+    : 
     <div>
       <button className="btn p-1 m-1" onClick={handleInscription}>Inscription</button>
-      <button className="btn p-1 m-1">Connexion</button>
+      <button className="btn p-1 m-1" onClick={handleConnexion}>Connexion</button>
     </div>}
     
 </nav>
