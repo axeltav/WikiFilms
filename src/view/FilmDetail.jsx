@@ -70,7 +70,7 @@ export const FilmDetail = () => {
               <p className="lead"><p className="h5">Genres :</p> {movie.genres && movie.genres.map(genre => {
                 return ` ${genre.name}`
               })}</p>
-              {videos[0] ? <button type="button" onClick={handleOpenModal} id="testbtn" className="btn btn-trailer" data-toggle="modal" data-target="#trailerModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-btn" viewBox="0 0 16 16">
+              {videos[0] ? <button type="button" onClick={handleOpenModal} id="testbtn" className="btn btn-trailer" data-toggle="modal" data-target="#trailerModal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" fill="currentColor" class="bi bi-play-btn" viewBox="0 0 16 16">
                 <path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
               </svg>Bande-annonce</button> : <p>Il n'y a pas de vidéo</p>}
@@ -80,14 +80,14 @@ export const FilmDetail = () => {
           </div>
         </div>
       </div>
-      <div className="d-flex flex-row justify-content-around flex-wrap">
+      <div className="d-flex flex-row justify-content-around flex-wrap mb-3">
         {credits.cast && credits.cast.slice(0, 6).map(actor => {
           return (
 
             <div className="card ml-1" key={actor.name} style={{ width: "13rem" }}>
               <img src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${actor.profile_path}`} className="card-img-top" alt={`portrait de ${actor.name}`} />
               <div className="card-body">
-                <p className="card-title h5">{actor.name}</p>
+                <p className="card-title h5 white">{actor.name}</p>
                 <p className="card-text">{actor.character}</p>
               </div>
             </div>
@@ -99,8 +99,8 @@ export const FilmDetail = () => {
         <div className="modal-dialog" onClick={(e) => { e.stopPropagation() }} role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <p className="modal-title h5" id="trailerModalLabel">{movie.title}</p>
-              <button type="button" onClick={handleCloseModal} className="close" data-dismiss="modal" aria-label="Close">
+              <p className="modal-title h5 white" id="trailerModalLabel">{movie.title}</p>
+              <button type="button" onClick={handleCloseModal} className="close white" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
