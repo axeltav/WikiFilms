@@ -55,10 +55,13 @@ export const Navbar = () => {
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <Link className="nav-link" href="/">Accueil<span className="sr-only">(current)</span></Link>
+        <Link className="nav-link" to="/">Accueil<span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" href="/">Film</Link>
+        <Link className="nav-link" to="/">Film</Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/favoris">Favoris</Link>
       </li>
     </ul>
   </div>
