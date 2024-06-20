@@ -6,6 +6,7 @@ import { FilmRecherche } from './view/FilmRecherche';
 import { Navbar } from './components/Navbar';
 import { Inscription } from './view/Inscription';
 import { Connexion } from './view/Connexion';
+import { Favoris } from './view/Favoris';
 
 function App() {
 
@@ -33,6 +34,10 @@ function App() {
         {
           path: '/connexion',
           element: <Connexion/>
+        },
+        {
+          path: '/favoris',
+          element: <Favoris/>
         },
         {
           path: "*",

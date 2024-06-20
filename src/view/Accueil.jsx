@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAxiosOpti } from "../hooks/useAxiosOpti";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { MovieList } from "../components/MovieList";
-import RangeSlider from "../components/RangeSlider";
 import { FormFilter } from "../components/FormFilter";
 import { ModalFilter } from "../components/ModalFilter";
 

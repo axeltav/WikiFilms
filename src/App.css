@@ -216,6 +216,24 @@ p {
   
 }
 
+.bi-heart, .bi-heart-fill {
+  color: red;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.favoriteButton {
+  border-radius: 12px;
+  background-color: #383838;
+  cursor: pointer;
+}
+
+.favoriteButton:hover {
+  background-color: #4f4f4f;
+}
+
 /* --------------- Double Range CSS ------------------- */
 .range_container {
   display: flex;
