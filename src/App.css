@@ -1,3 +1,27 @@
+.btn-trailer {
+  background-color: #cf2f2f;
+}
+
+#trailerModal .iframe {
+  width: 100%;
+  height: 100%;
+}
+
+#trailerModal .modal-content {
+  width: 100%;
+  height: 100%;
+}
+
+#trailerModal .modal-dialog {
+
+  max-width: 1500px;
+  width: 80%;
+  height: 75%;
+  margin: 0;
+  margin: auto;
+  margin-top: 50px;
+}
+
 body {
   background-color: #212121;
 }
