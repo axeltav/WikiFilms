@@ -1,10 +1,53 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Avatar from "react-avatar";
 
 export const Navbar = () => {
+
+  const [search, setSearch] = useState('');
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  const navigate = useNavigate();
+
+  let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(window.location.pathname === "/films/recherche"){
+      console.log('meme page')
+    }
+    navigate({
+      pathname: '/films/recherche',
+      search: `?search=${search}`
+    });
+    navigate(0);
+  }
+
+  const handleInscription = () => {
+    navigate('/inscription');
+  }
+
+  const handleConnexion = () => {
+    navigate('/connexion');
+  }
+
+  const handleLogOut = () => {
+    localStorage.removeItem("currentUser");
+    navigate(0);
+  };
+
+  const handleUserAvatarClick = () => {
+    setShowUserMenu(!showUserMenu);
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <Link className="navbar-brand" href="#">Wikifilms</Link>
+  <Link className="navbar-brand" href="#"><h1 className="siteName">Wikifilms</h1></Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -19,10 +62,33 @@ export const Navbar = () => {
       </li>
     </ul>
   </div>
-    <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
+      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Chercher" value={search} onChange={handleChange}/>
+      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
     </form>
+    {currentUser && currentUser.userName ?
+    <div className="dd">
+      <Avatar
+      className="ml-2 user-avatar"
+      onClick={handleUserAvatarClick}
+      name={currentUser.userName}
+      size="40"
+      round={true}
+      /> 
+      {showUserMenu && 
+        <div className="dd-content">
+          <div className="userMenuItem" onClick={handleLogOut}>
+            <p className="m-0">Déconnexion</p>
+          </div>
+        </div>
+      }
+    </div>
+    : 
+    <div>
+      <button className="btn p-1 m-1" onClick={handleInscription}>Inscription</button>
+      <button className="btn p-1 m-1" onClick={handleConnexion}>Connexion</button>
+    </div>}
+    
 </nav>
     </>
   );

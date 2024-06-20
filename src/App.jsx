@@ -2,7 +2,10 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import { Accueil } from './view/Accueil';
 import { FilmDetail } from './view/FilmDetail';
+import { FilmRecherche } from './view/FilmRecherche';
 import { Navbar } from './components/Navbar';
+import { Inscription } from './view/Inscription';
+import { Connexion } from './view/Connexion';
 
 function App() {
 
@@ -18,6 +21,18 @@ function App() {
         {
           path: 'films/:id',
           element: <FilmDetail/>
+        },
+        {
+          path: 'films/recherche',
+          element: <FilmRecherche/>
+        },
+        {
+          path: '/inscription',
+          element: <Inscription/>
+        },
+        {
+          path: '/connexion',
+          element: <Connexion/>
         },
         {
           path: "*",
