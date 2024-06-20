@@ -242,7 +242,7 @@ export const Accueil = () => {
         next={fetchMoreMovies}
         hasMore={hasMore}
         loader={<p style={{color: "white"}}>Chargement de nouveaux films ...</p>}>
-      <div className="container m-0 p-0">
+      <div className="container container-home m-0 p-0">
         <div className="row m-0" style={{display:"flex", flexWrap: "wrap"}}>
           <aside className="d-none d-md-flex col-3 flex-column align-items-center pt-5 pl-0 pr-0 filters ">
             <h2>Liste des films</h2>
