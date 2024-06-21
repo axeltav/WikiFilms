@@ -2,7 +2,12 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import { Accueil } from './view/Accueil';
 import { FilmDetail } from './view/FilmDetail';
+import { FilmRecherche } from './view/FilmRecherche';
 import { Navbar } from './components/Navbar';
+import { Inscription } from './view/Inscription';
+import { Connexion } from './view/Connexion';
+import { Favoris } from './view/Favoris';
+import { Search } from './components/Search';
 
 function App() {
 
@@ -20,6 +25,22 @@ function App() {
           element: <FilmDetail/>
         },
         {
+          path: 'films/recherche',
+          element: <FilmRecherche/>
+        },
+        {
+          path: '/inscription',
+          element: <Inscription/>
+        },
+        {
+          path: '/connexion',
+          element: <Connexion/>
+        },
+        {
+          path: '/favoris',
+          element: <Favoris/>
+        },
+        {
           path: "*",
           element: <h1>Page not found</h1>
         }
@@ -31,6 +52,9 @@ function Root() {
   return (
     <>
       <Navbar/>
+      <div className="d-block d-md-none m-5">
+        <Search/>
+      </div>
       <Outlet/>
     </>
   )
