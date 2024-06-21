@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar';
 import { Inscription } from './view/Inscription';
 import { Connexion } from './view/Connexion';
 import { Favoris } from './view/Favoris';
+import { Search } from './components/Search';
 
 function App() {
 
@@ -51,6 +52,9 @@ function Root() {
   return (
     <>
       <Navbar/>
+      <div className="d-block d-md-none m-5">
+        <Search/>
+      </div>
       <Outlet/>
     </>
   )

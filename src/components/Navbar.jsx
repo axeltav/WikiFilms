@@ -1,31 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "react-avatar";
+import { Search } from "./Search";
 
 export const Navbar = () => {
 
-  const [search, setSearch] = useState('');
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   const navigate = useNavigate();
 
   let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if(window.location.pathname === "/films/recherche"){
-      console.log('meme page')
-    }
-    navigate({
-      pathname: '/films/recherche',
-      search: `?search=${search}`
-    });
-    navigate(0);
-  }
 
   const handleInscription = () => {
     navigate('/inscription');
@@ -37,7 +21,7 @@ export const Navbar = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem("currentUser");
-    navigate(0);
+    navigate('/');
   };
 
   const handleUserAvatarClick = () => {
@@ -60,15 +44,14 @@ export const Navbar = () => {
       <li className="nav-item">
         <Link className="nav-link" to="/">Film</Link>
       </li>
-      <li className="nav-item">
+      {currentUser && <li className="nav-item">
         <Link className="nav-link" to="/favoris">Favoris</Link>
-      </li>
+      </li>}
     </ul>
   </div>
-    <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Chercher" value={search} onChange={handleChange}/>
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
-    </form>
+  <div className="d-none d-md-block">
+    <Search/>
+  </div>
     {currentUser && currentUser.userName ?
     <div className="dd">
       <Avatar
