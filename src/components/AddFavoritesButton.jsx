@@ -5,12 +5,14 @@ export const AddFavoritesButton = ({movie = {}}) => {
 
     let user =JSON.parse(localStorage.getItem('currentUser'));
     let favoritesList = JSON.parse(localStorage.getItem('favoritesList'));
-
+    // if(favoritesList){
+    //      favoritesList = [];
+    // }
     const [isFavorite, setIsFavorite] = useState(false); 
     
 
     useEffect(() => {
-        setIsFavorite(user ?(favoritesList.find(favorite => favorite.id === movie.id && favorite.user === user.email)? true : false) : false);
+        setIsFavorite(user && favoritesList ?(favoritesList.find(favorite => favorite.id === movie.id && favorite.user === user.email)? true : false) : false);
       }, [movie]);
     
     const addFavorites = () => {
