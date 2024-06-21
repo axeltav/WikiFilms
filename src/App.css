@@ -224,6 +224,14 @@ p {
   margin-right: 10px;
 }
 
+.bi-heart-disabled {
+  color: rgb(90, 25, 25);
+  margin-top: 10px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .favoriteButton {
   border-radius: 12px;
   background-color: #383838;
@@ -233,6 +241,33 @@ p {
 .favoriteButton:hover {
   background-color: #4f4f4f;
 }
+
+.favoriteButton:disabled {
+  cursor:not-allowed;
+  border: 1px solid #999999;
+  background-color: #1f1f1f;
+}
+
+/* --------------- Tooltip ------------------- */
+
+.tooltip-custom .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin-left: 5px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 2;
+}
+
+.tooltip-custom:hover .tooltiptext {
+  visibility: visible;
+}
+
 
 /* --------------- Double Range CSS ------------------- */
 .range_container {

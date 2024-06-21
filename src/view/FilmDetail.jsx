@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+/* eslint-disable react/no-unescaped-entities */
+import { useEffect, useState } from "react";
 import { useAxiosOpti } from "../hooks/useAxiosOpti";
+import { AddFavoritesButton } from "../components/AddFavoritesButton";
 
 export const FilmDetail = () => {
 
+  const user = JSON.parse(localStorage.getItem('currentUser'));
   const url = window.location.pathname;
   const id = url.substring(url.lastIndexOf('/') + 1);
   const [movie, setMovie] = useState({});
@@ -62,18 +65,22 @@ export const FilmDetail = () => {
       <div className="jumbotron" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%), url(https://media.themoviedb.org/t/p/w1920_and_h1080_bestv2/${movie.backdrop_path})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
         <div className="container" style={{ color: 'white' }}>
           <div className="row justify-content">
-            <div className="fit-content">
+            <div className="fit-content col-12 col-lg-4">
               <img className="img_film" src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`}></img>
             </div>
-            <div className="col col6">
+            <div className="col-12 col-lg-8">
               <h2 className="display-4">{movie.title} ({movie.release_date && movie.release_date.slice(0, 4)})</h2>
               <p className="lead"><p className="h5">Genres :</p> {movie.genres && movie.genres.map(genre => {
                 return ` ${genre.name}`
               })}</p>
-              {videos[0] ? <button type="button" onClick={handleOpenModal} id="testbtn" className="btn btn-trailer" data-toggle="modal" data-target="#trailerModal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" fill="currentColor" class="bi bi-play-btn" viewBox="0 0 16 16">
-                <path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
-                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
-              </svg>Bande-annonce</button> : <p>Il n'y a pas de vidéo</p>}
+              <div className="d-flex flex-row">
+                {videos[0] && <button type="button" onClick={handleOpenModal} className="btn btn-trailer mr-2" data-toggle="modal" data-target="#trailerModal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" fill="currentColor" className="bi bi-play-btn" viewBox="0 0 16 16">
+                  <path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
+                </svg>Bande-annonce</button>}
+
+                <AddFavoritesButton movie={movie}/>
+              </div>
               <p><p className="h5">Synopsis :</p> {movie.overview} </p>
               <p><p className="h5">Réalisateur :</p> {credits.crew && credits.crew.find(person => person.job.search(/^Director$/) !== -1).name} </p>
             </div>
