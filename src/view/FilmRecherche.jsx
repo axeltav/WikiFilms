@@ -44,7 +44,7 @@ export const FilmRecherche = () => {
         loader={<p style={{color: "white"}}>Chargement de nouveaux films ...</p>}>
         <div className="container">
             <h1 className="py-3">{search}</h1>
-            <MovieList movies={movies}/>
+            <MovieList movies={movies} isfavoritesList={true}/>
         </div>
     </InfiniteScroll>
     </>
