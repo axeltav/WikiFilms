@@ -123,10 +123,10 @@ export const FilmDetail = () => {
                 )
               })}
             </div>
-            <Slider movieList={recom} />
-            <div className="comment-section col-6">
+            <div className="comment-section col-6 mb-5">
               <Comments movieId={movie.id}/>
             </div>
+            <Slider movieList={recom} title="Recommandations"/>
           </div>
         </div>
 
