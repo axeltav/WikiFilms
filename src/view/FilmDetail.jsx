@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useAxiosOpti } from "../hooks/useAxiosOpti";
 import { AddFavoritesButton } from "../components/AddFavoritesButton";
+import { Comments } from "../components/Comments";
 
 export const FilmDetail = () => {
 
@@ -87,19 +88,26 @@ export const FilmDetail = () => {
           </div>
         </div>
       </div>
-      <div className="d-flex flex-row justify-content-around flex-wrap mb-3">
-        {credits.cast && credits.cast.slice(0, 6).map(actor => {
-          return (
+      <div className="container filmdetail-info ">
+        <div className="row d-flex justify-content-center">
+          <div className="col-12 d-flex flex-row justify-content-around flex-wrap mb-3">
+            {credits.cast && credits.cast.slice(0, 6).map(actor => {
+              return (
 
-            <div className="card ml-1" key={actor.name} style={{ width: "13rem" }}>
-              <img src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${actor.profile_path}`} className="card-img-top" alt={`portrait de ${actor.name}`} />
-              <div className="card-body">
-                <p className="card-title h5 white">{actor.name}</p>
-                <p className="card-text">{actor.character}</p>
-              </div>
-            </div>
-          )
-        })}
+                <div className="card ml-1" key={actor.name} style={{ width: "13rem" }}>
+                  <img src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${actor.profile_path}`} className="card-img-top" alt={`portrait de ${actor.name}`} />
+                  <div className="card-body">
+                    <p className="card-title h5 white">{actor.name}</p>
+                    <p className="card-text">{actor.character}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <div className="comment-section col-6">
+            <Comments movieId={movie.id}/>
+          </div>
+        </div>
       </div>
 
       {isOpen && <div className="modal fade" id="trailerModal" tabIndex="-1" role="dialog" aria-labelledby="trailerModalLabel" onClick={handleCloseModal} aria-hidden="true">
