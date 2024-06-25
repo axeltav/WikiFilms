@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import Avatar from "react-avatar";
 
 export const Comments = ({movieId = ""}) => {
     let [commentList, setCommentList] = useState(JSON.parse(localStorage.getItem('comments'))?JSON.parse(localStorage.getItem('comments')):[]);
     let [commentContent, setCommentContent] = useState('');
+
+    let user = JSON.parse(localStorage.getItem('currentUser'));
 
     const addComment = (e) => {
         e.preventDefault();
@@ -37,9 +40,24 @@ export const Comments = ({movieId = ""}) => {
         {commentList.filter(comment=> comment.movieId === movieId).map(comment => {
             return (
               <div className="comment" key={comment.id}>
+                <div className="d-flex flex-row justify-content-between">
+                <div className="d-flex flex-row m-2 justify-content-start align-items-center">
+                  <Avatar
+                  className="mr-2 user-avatar"
+                  name={comment.author}
+                  size="40"
+                  round={true}
+                  />
+                  <p className="m-0">{comment.author}</p>
+                </div>
+                <div className="d-flex align-items-center">
+                {comment.user && user && comment.user === user.email && 
+                <button className="delete-btn" onClick={() => deleteComment(comment.id)} aria-label="Supprimer les commentaire">Supprimer</button>
+                }
+                </div>
+                </div>
                 <p>{comment.content}</p>
-                <p>{comment.author}</p>
-                <button onClick={() => deleteComment(comment.id)}>Supprimer</button>
+                
               </div>
             )
           })
@@ -48,8 +66,9 @@ export const Comments = ({movieId = ""}) => {
       <form onSubmit={addComment} className="container pt-3 m-0 pb-0 pl-0 pr-0">
         <label htmlFor="newComment" className="white ">Nouveau commentaire : </label>
         <div className="row p-2">
-            <textarea className="form-control col-10" id="newComment" rows="3" value={commentContent} onChange={handlechange}></textarea>
-            <button type="submit" className="btn validBtn col-2">Envoyer</button>
+            <textarea className="form-control col-9" id="newComment" rows="3" value={commentContent} onChange={handlechange}></textarea>
+            <div className="col-1"></div>
+            <button type="submit" className="btn validBtn col-2" aria-label="Envoyer le commentaire">Envoyer</button>
         </div>
       </form>
     </div>

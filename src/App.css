@@ -252,10 +252,12 @@ p {
   background-color: #383838;
   border: #999999 solid 1px;
   margin: 10px;
+  border-radius: 8px;
 }
 
 .comments-container {
   border-bottom: #999999 solid 1px;
+  min-height: 113px;
 }
 
 .filmdetail-info {
@@ -279,6 +281,13 @@ p {
 
 .tooltip-custom:hover .tooltiptext {
   visibility: visible;
+}
+
+.delete-btn {
+  border-radius: 12px;
+  background-color: #8f8d8d;
+  cursor: pointer;
+  max-height: 34px;
 }
 
 
