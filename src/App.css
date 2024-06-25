@@ -263,6 +263,18 @@ p {
 .filmdetail-info {
   max-width: 2400px;
 }
+
+.delete-btn {
+  border-radius: 12px;
+  background-color: #8f8d8d;
+  cursor: pointer;
+  max-height: 34px;
+}
+
+.loader-container {
+  height: 70vh;
+}
+
 /* --------------- Tooltip ------------------- */
 
 .tooltip-custom .tooltiptext {
@@ -283,12 +295,6 @@ p {
   visibility: visible;
 }
 
-.delete-btn {
-  border-radius: 12px;
-  background-color: #8f8d8d;
-  cursor: pointer;
-  max-height: 34px;
-}
 
 
 /* --------------- Double Range CSS ------------------- */
