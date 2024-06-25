@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import { useAxiosOpti } from "../hooks/useAxiosOpti";
+import {Slider} from "../components/Slider";
 import { AddFavoritesButton } from "../components/AddFavoritesButton";
 import { Comments } from "../components/Comments";
 import loader from "../assets/WikiFilms.gif"
@@ -14,6 +15,7 @@ export const FilmDetail = () => {
   const [movie, setMovie] = useState({});
   const [videos, setVideos] = useState({});
   const [credits, setCredits] = useState([]);
+  const [recom, setRecom] = useState([]);
   const { get } = useAxiosOpti();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,6 +38,11 @@ export const FilmDetail = () => {
         .then(res => {
           setCredits(res.data)
 
+        }),
+      get(`movie/${id}/recommendations?language=fr&api_key=de399415d2204316dcf46dabb3632ce6`)
+        .then(res => {
+          setRecom(res.data.results)
+          console.log(res.data.results);
         })
     ]).then(() => {
       setIsLoaded(true);
@@ -76,9 +83,9 @@ export const FilmDetail = () => {
               </div>
               <div className="col-12 col-lg-8">
                 <h2 className="display-4">{movie.title} ({movie.release_date && movie.release_date.slice(0, 4)})</h2>
-                <p className="lead"><p className="h5">Genres :</p> {movie.genres && movie.genres.map(genre => {
-                  return ` ${genre.name}`
-                })}</p>
+                <p className="lead"><p className="h5">Genres :</p> {movie.genres && movie.genres.length > 0 ? movie.genres.map(genre => {
+                return ` ${genre.name}`
+              }) : "Non renseigné"}</p>
                 <div className="d-flex flex-row">
                   {videos[0] && <button type="button" onClick={handleOpenModal} className="btn btn-trailer mr-2" data-toggle="modal" data-target="#trailerModal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" fill="currentColor" className="bi bi-play-btn" viewBox="0 0 16 16">
                     <path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
@@ -87,18 +94,25 @@ export const FilmDetail = () => {
 
                   <AddFavoritesButton movie={movie}/>
                 </div>
-                <p><p className="h5">Synopsis :</p> {movie.overview} </p>
-                <p><p className="h5">Réalisateur :</p> {credits.crew && credits.crew.find(person => person.job.search(/^Director$/) !== -1).name} </p>
+                <p><p className="h5">Synopsis :</p> {movie.overview ? movie.overview : "Non renseigné"} </p>
+                  {credits.crew && credits.crew.find(person => person.job.search(/^Director$/) !== -1) && <p><p className="h5">Réalisateur :</p> {credits.crew.find(person => person.job.search(/^Director$/) !== -1).name} </p>}
               </div>
             </div>
           </div>
+        </div>
+        <div className="infosSupp">
+          <p><p className="h5 white">Titre d'origine : </p> {movie.original_title}</p>
+          <p><p className="h5 white">Durée : </p> {movie.runtime && movie.runtime > 0 ? movie.runtime + " minutes" : "Non renseigné"}</p>
+          <p><p className="h5 white">Date de sortie : </p> {movie.release_date ? movie.release_date : "Non renseigné"}</p>
+          <p><p className="h5 white">Budget : </p> {movie.budget && movie.budget > 0 ? movie.budget + " $" : "Non renseigné"}</p>
+          <p><p className="h5 white">Recette : </p> {movie.revenue && movie.revenue > 0 ? movie.revenue + " $" : "Non renseigné"}</p>
+          <p><p className="h5 white">Statut : </p> {movie.status ? movie.status : "Non renseigné"}</p>
         </div>
         <div className="container filmdetail-info ">
           <div className="row d-flex justify-content-center">
             <div className="col-12 d-flex flex-row justify-content-around flex-wrap mb-3">
               {credits.cast && credits.cast.slice(0, 6).map(actor => {
                 return (
-
                   <div className="card ml-1" key={actor.name} style={{ width: "13rem" }}>
                     <img src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${actor.profile_path}`} className="card-img-top" alt={`portrait de ${actor.name}`} />
                     <div className="card-body">
@@ -109,6 +123,7 @@ export const FilmDetail = () => {
                 )
               })}
             </div>
+            <Slider movieList={recom} />
             <div className="comment-section col-6">
               <Comments movieId={movie.id}/>
             </div>
