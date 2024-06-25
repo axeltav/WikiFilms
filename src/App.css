@@ -128,8 +128,9 @@ p {
 }
 
 .sliderSection{
-  margin-left: 50px;
-  margin-right: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 100vw;
 }
 
 .customSlider {
@@ -327,7 +328,7 @@ p {
 
 .tooltip-custom .tooltiptext {
   visibility: hidden;
-  width: 120px;
+  max-width: 350px;
   background-color: black;
   color: #fff;
   text-align: center;
