@@ -9,6 +9,7 @@ import { Connexion } from './view/Connexion';
 import { Favoris } from './view/Favoris';
 import { Search } from './components/Search';
 import { Films } from './view/Films';
+import { Actors } from './view/Actors';
 
 function App() {
 
@@ -32,6 +33,10 @@ function App() {
         {
           path: '/films/recherche',
           element: <FilmRecherche/>
+        },
+        {
+          path: '/acteurs',
+          element: <Actors/>
         },
         {
           path: '/inscription',
