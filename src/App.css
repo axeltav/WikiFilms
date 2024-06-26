@@ -186,6 +186,23 @@ p {
   border-bottom-right-radius: 15px;
 }
 
+.actorList {
+  width: 50%;
+  border: #999999 solid 1px;
+  border-radius: 8px;
+}
+
+.actorListBtn {
+  border-radius: 12px;
+  background-color: #383838;
+  cursor: pointer;
+  color: white;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
 .overley-note {
   position: absolute;
   bottom: 7.4em;
