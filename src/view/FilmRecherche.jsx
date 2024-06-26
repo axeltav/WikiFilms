@@ -40,7 +40,7 @@ export const FilmRecherche = () => {
 
   return (
     <>
-      {isLoaded ?<InfiniteScroll
+      {isLoaded ?(movies.length > 0 ? <InfiniteScroll
         dataLength={movies.length}
         next={fetchMoreMovies}
         hasMore={hasMore}
@@ -52,7 +52,7 @@ export const FilmRecherche = () => {
           <h1 className="py-3">{search}</h1>
           <MovieList movies={movies} isfavoritesList={true} />
         </div>
-      </InfiniteScroll>
+      </InfiniteScroll> : <p className="h3 white text-center mt-5">Aucun film trouvé !</p>)
       :
         <div className="d-flex justify-content-center align-items-center loader-container">
           <img src={loader} alt="image de chargement"/>
