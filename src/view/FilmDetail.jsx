@@ -135,9 +135,10 @@ export const FilmDetail = () => {
                         <p className="card-text">{actor.character}</p>
                       </div>
                     </div>
-                  </div>
+                  
                 )
               })}
+            </div>
             </div>
             <div className="actorList m-2">
               <div className="d-flex flex-row justify-content-between align-items-center ">
@@ -209,6 +210,7 @@ export const FilmDetail = () => {
             <div className="comment-section col-6 mb-5">
               <Comments movieId={movie.id}/>
             </div>
+            <Slider movieList={recom} title="Recommandations" />
           </div>
 
           {isOpen && <div className="modal fade" id="trailerModal" tabIndex="-1" role="dialog" aria-labelledby="trailerModalLabel" onClick={handleCloseModal} aria-hidden="true">

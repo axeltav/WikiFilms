@@ -365,6 +365,10 @@ p {
 
 .filmdetail-info {
   max-width: 2400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .delete-btn {

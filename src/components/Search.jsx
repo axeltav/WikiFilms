@@ -20,10 +20,11 @@ export const Search = ({actor = false}) => {
               pathname: '/acteurs',
               search: `?query=${search}`
             });
+          } else {
+            navigate({
+              pathname: '/acteurs',
+            });
           }
-          navigate({
-            pathname: '/acteurs',
-          });
         } else {
           navigate({
             pathname: '/films/recherche',
