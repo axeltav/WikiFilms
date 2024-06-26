@@ -10,6 +10,7 @@ import { Favoris } from './view/Favoris';
 import { Search } from './components/Search';
 import { ActorDetail } from './view/ActorDetail';
 import { Films } from './view/Films';
+import { Actors } from './view/Actors';
 
 function App() {
 
@@ -33,6 +34,10 @@ function App() {
         {
           path: '/films/recherche',
           element: <FilmRecherche/>
+        },
+        {
+          path: '/acteurs',
+          element: <Actors/>
         },
         {
           path: '/inscription',

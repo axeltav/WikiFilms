@@ -90,6 +90,8 @@ p {
   color: #FFFFFF;
 }
 
+
+
 .poster-date {
   color: #847F7F;
   font-weight: bold;
@@ -173,6 +175,23 @@ p {
 
 .homeSlider {
   max-width: 80%;
+}
+
+.header-actorList {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.header-actorList form {
+  margin: auto;
+}
+
+.header-items-actors {
+  text-align: center;
+  margin: auto;
 }
 
 .jumbotron-homepage {

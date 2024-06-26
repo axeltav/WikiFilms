@@ -292,7 +292,7 @@ export const Films = () => {
                 </select>
               </div>
               {isLoaded ?
-                <MovieList movies={movies}/>
+                <MovieList movies={movies} isfavoritesList={true}/>
               :
               <div className="d-flex justify-content-center align-items-center loader-container">
                 <img src={loader} alt="image de chargement"/>
