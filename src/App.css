@@ -421,6 +421,18 @@ input[type="range"] {
   pointer-events: none;
 }
 
+.movie-credits-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.movieCreditsList{
+  width: 50%;
+  border: #999999 solid 1px;
+  border-radius: 8px;
+}
+
 .infosSupp {
   border: none;
   border-radius: 40px;
@@ -431,6 +443,18 @@ input[type="range"] {
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 30px;
+}
+
+.biography{
+  border: none;
+  border-radius: 40px;
+  background: #383838;
+  display: flex;
+  justify-content: space-around;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 30px;
+  padding: 16px;
 }
 
 .infosSupp p {

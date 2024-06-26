@@ -8,6 +8,7 @@ import { Inscription } from './view/Inscription';
 import { Connexion } from './view/Connexion';
 import { Favoris } from './view/Favoris';
 import { Search } from './components/Search';
+import { ActorDetail } from './view/ActorDetail';
 
 function App() {
 
@@ -39,6 +40,10 @@ function App() {
         {
           path: '/favoris',
           element: <Favoris/>
+        },
+        {
+          path: '/acteurs/:id',
+          element: <ActorDetail/>
         },
         {
           path: "*",
