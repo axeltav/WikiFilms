@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 export const FilmDetail = () => {
 
-  const user = JSON.parse(localStorage.getItem('currentUser'));
   const url = window.location.pathname;
   const id = url.substring(url.lastIndexOf('/') + 1);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,6 +18,8 @@ export const FilmDetail = () => {
   const [recom, setRecom] = useState([]);
   const { get } = useAxiosOpti();
   const [isOpen, setIsOpen] = useState(false);
+  const [showListActor, setShowListActor] = useState(false);
+  const [showListCrew, setShowListCrew] = useState(false);
 
   const navigate = useNavigate();
 
@@ -76,6 +77,15 @@ export const FilmDetail = () => {
   const handleActorClick = (id) => {
     navigate(`/acteurs/${id}`);
   }
+  
+  const handleToogleListActor = () => {
+    setShowListActor(!showListActor);
+  }
+
+  const handleToogleListCrew = () => {
+    setShowListCrew(!showListCrew);
+  }
+  
   return (
     <>
       {isLoaded ?
@@ -125,13 +135,79 @@ export const FilmDetail = () => {
                         <p className="card-text">{actor.character}</p>
                       </div>
                     </div>
-                  )
-                })}
+                  </div>
+                )
+              })}
+            </div>
+            <div className="actorList m-2">
+              <div className="d-flex flex-row justify-content-between align-items-center ">
+                <h3 className="m-2">Acteurs</h3>
+                <button className="actorListBtn m-2" onClick={handleToogleListActor}>
+                {!showListActor ? <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+                  <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                </svg> 
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-dash" viewBox="0 0 16 16">
+                  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                </svg>
+                }
+                </button>
               </div>
-              <div className="comment-section col-6 mb-5">
-                <Comments movieId={movie.id} />
+              {showListActor && <table className="table table-dark mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Personnage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {credits.cast.map(actor => {
+                    return (
+                      <tr key={actor.name}>
+                        <td scope="row">{actor.name}</td>
+                        <td>{actor.character}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>}
+            </div>
+
+            <div className="actorList m-2">
+              <div className="d-flex flex-row justify-content-between align-items-center ">
+                <h3 className="m-2">Équipe de prodution</h3>
+                <button className="actorListBtn m-2" onClick={handleToogleListCrew  }>
+                {!showListCrew ? <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+                  <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                </svg> 
+                :
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-dash" viewBox="0 0 16 16">
+                  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                </svg>
+                }
+                </button>
               </div>
-              <Slider movieList={recom} title="Recommandations" />
+              {showListCrew && <table className="table table-dark mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">poste</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {credits.crew.map(crew => {
+                    return (
+                      <tr key={crew.name}>
+                        <td scope="row">{crew.name}</td>
+                        <td>{crew.job}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>}
+            </div>
+            <div className="comment-section col-6 mb-5">
+              <Comments movieId={movie.id}/>
             </div>
           </div>
 
