@@ -8,6 +8,9 @@ import { Inscription } from './view/Inscription';
 import { Connexion } from './view/Connexion';
 import { Favoris } from './view/Favoris';
 import { Search } from './components/Search';
+import { ActorDetail } from './view/ActorDetail';
+import { Films } from './view/Films';
+import { Actors } from './view/Actors';
 
 function App() {
 
@@ -21,12 +24,20 @@ function App() {
           element: <Accueil/>
         },
         {
-          path: 'films/:id',
+          path: '/films/:id',
           element: <FilmDetail/>
         },
         {
-          path: 'films/recherche',
+          path: '/films',
+          element: <Films/>
+        },
+        {
+          path: '/films/recherche',
           element: <FilmRecherche/>
+        },
+        {
+          path: '/acteurs',
+          element: <Actors/>
         },
         {
           path: '/inscription',
@@ -39,6 +50,10 @@ function App() {
         {
           path: '/favoris',
           element: <Favoris/>
+        },
+        {
+          path: '/acteurs/:id',
+          element: <ActorDetail/>
         },
         {
           path: "*",

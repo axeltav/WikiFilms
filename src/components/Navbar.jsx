@@ -42,7 +42,10 @@ export const Navbar = () => {
         <Link className="nav-link" to="/">Accueil<span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/">Film</Link>
+        <Link className="nav-link" to="/films">Films</Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/acteurs">Acteurs</Link>
       </li>
       {currentUser && <li className="nav-item">
         <Link className="nav-link" to="/favoris">Favoris</Link>
